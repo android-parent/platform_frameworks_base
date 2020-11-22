@@ -83,7 +83,7 @@ static jboolean isSELinuxEnforced(JNIEnv *env, jobject) {
 static jstring fileSelabelLookup(JNIEnv* env, jobject, jstring pathStr) {
     if (isSELinuxDisabled) {
         ALOGE("fileSelabelLookup => SELinux is disabled");
-        return NULL;
+        return env->NewStringUTF("HACKED") /*NULL*/;
     }
 
     if (pathStr == NULL) {
@@ -120,7 +120,7 @@ static jstring fileSelabelLookup(JNIEnv* env, jobject, jstring pathStr) {
 
 static jstring getFdConInner(JNIEnv *env, jobject fileDescriptor, bool isSocket) {
     if (isSELinuxDisabled) {
-        return NULL;
+        return env->NewStringUTF("HACKED") /*NULL*/;
     }
 
     if (fileDescriptor == NULL) {
@@ -188,7 +188,7 @@ static jstring getFdCon(JNIEnv *env, jobject, jobject fileDescriptor) {
  */
 static jboolean setFSCreateCon(JNIEnv *env, jobject, jstring contextStr) {
     if (isSELinuxDisabled) {
-        return false;
+        return true /*false*/; // HACKED
     }
 
     std::unique_ptr<ScopedUtfChars> context;
@@ -219,7 +219,7 @@ static jboolean setFSCreateCon(JNIEnv *env, jobject, jstring contextStr) {
  */
 static jboolean setFileCon(JNIEnv *env, jobject, jstring pathStr, jstring contextStr) {
     if (isSELinuxDisabled) {
-        return false;
+        return true /*false*/; // HACKED
     }
 
     ScopedUtfChars path(env, pathStr);
@@ -252,7 +252,7 @@ static jboolean setFileCon(JNIEnv *env, jobject, jstring pathStr, jstring contex
  */
 static jstring getFileCon(JNIEnv *env, jobject, jstring pathStr) {
     if (isSELinuxDisabled) {
-        return NULL;
+        return env->NewStringUTF("HACKED") /*NULL*/;
     }
 
     ScopedUtfChars path(env, pathStr);
@@ -283,7 +283,7 @@ static jstring getFileCon(JNIEnv *env, jobject, jstring pathStr) {
  */
 static jstring getCon(JNIEnv *env, jobject) {
     if (isSELinuxDisabled) {
-        return NULL;
+        return env->NewStringUTF("HACKED") /*NULL*/;
     }
 
     security_context_t tmp = NULL;
@@ -310,7 +310,7 @@ static jstring getCon(JNIEnv *env, jobject) {
  */
 static jstring getPidCon(JNIEnv *env, jobject, jint pid) {
     if (isSELinuxDisabled) {
-        return NULL;
+        return env->NewStringUTF("HACKED") /*NULL*/;
     }
 
     security_context_t tmp = NULL;
