@@ -261,9 +261,9 @@ static void SetUpSeccompFilter(uid_t uid) {
 
   // Apply system or app filter based on uid.
   if (uid >= AID_APP_START) {
-    set_app_seccomp_filter();
+//    set_app_seccomp_filter();
   } else {
-    set_system_seccomp_filter();
+//    set_system_seccomp_filter();
   }
 }
 
