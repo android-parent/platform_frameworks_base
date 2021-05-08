@@ -640,12 +640,12 @@ static void SetUpSeccompFilter(uid_t uid, bool is_child_zygote) {
   // Apply system or app filter based on uid.
   if (uid >= AID_APP_START) {
     if (is_child_zygote) {
-      set_app_zygote_seccomp_filter();
+//      set_app_zygote_seccomp_filter();
     } else {
-      set_app_seccomp_filter();
+//      set_app_seccomp_filter();
     }
   } else {
-    set_system_seccomp_filter();
+//    set_system_seccomp_filter();
   }
 }
 
